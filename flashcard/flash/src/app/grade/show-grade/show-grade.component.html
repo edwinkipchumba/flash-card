@@ -1,3 +1,24 @@
 <!-- <p>show-grade works!</p> -->
 
-<table class></table>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>GradeId</th>
+            <th>GradeName</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let dataItem of GradeList">
+            <td>{{dataItem.GradeId}}</td> 
+            <td>{{dataItem.GradeName}}</td>
+            <td>
+                <button type="button" class="btn btn-primary mr-1">
+                   Edit
+                </button>
+            </td> 
+
+        </tr>
+    </tbody>
+
+</table>
