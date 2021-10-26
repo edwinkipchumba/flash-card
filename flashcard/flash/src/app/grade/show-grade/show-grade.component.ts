@@ -12,7 +12,7 @@ export class ShowGradeComponent implements OnInit {
 
   GradeList:any=[];
 
-  modalTitle:string;
+  ModalTitle:string;
   ActivateAddEditGradeComp:boolean="false";
   grade:any;
   ngOnInit(): void {
@@ -30,6 +30,14 @@ export class ShowGradeComponent implements OnInit {
     this.ModalTitle="Add Grade";
     this.ActivateAddEditGradeComp=true;
   }
+
+  // editclick
+  editClick(item){
+    this.grade = item;
+    this.ModalTitle='Edit Grade';
+    this.ActivateAddEditGrade=true;
+  }
+
 
   // close click
   closeClick(){

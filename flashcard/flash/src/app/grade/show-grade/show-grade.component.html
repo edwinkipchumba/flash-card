@@ -11,7 +11,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{Modal title}}</h5>
+          <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
           (click)="closeClick()">
               <span aria-hidden="true">&times;</span>
@@ -41,6 +41,12 @@
             <td>{{dataItem.GradeId}}</td> 
             <td>{{dataItem.GradeName}}</td>
             <td>
+                <button type="button" class="btn btn-primary btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#exampleModal"
+    (click)="editClick(dataItem)"
+    data-backdrop="static" data-keyboard="false">
+  </button>
+  
+                
                 <button type="button" class="btn btn-primary mr-1">
                    Edit
                 </button>

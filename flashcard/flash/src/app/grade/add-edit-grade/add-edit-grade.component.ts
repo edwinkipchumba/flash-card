@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 
 @Component({
   selector: 'app-add-edit-grade',
@@ -9,7 +9,14 @@ export class AddEditGradeComponent implements OnInit {
 
   constructor() { }
 
+  @Input() grade:any;
+  GradeId:string;
+  GradeName:string;
+
   ngOnInit(): void {
+
+    this.GradeId=this.grade.GradeId;
+    this.GradeName=this.grade.GradeName;
   }
 
 }
