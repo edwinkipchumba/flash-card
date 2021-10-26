@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService} from 'src/app/shared.service';
 
 @Component({
   selector: 'app-show-grade',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShowGradeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
+
+  GradeList:any=[];
 
   ngOnInit(): void {
+
+    this.refreshGradeList();
   }
 
+
+  refreshGradeList(){
+    this.service.getGradeList().subscribe(data=>{
+      this.GradeList=data;
+    });
+  }
 }
