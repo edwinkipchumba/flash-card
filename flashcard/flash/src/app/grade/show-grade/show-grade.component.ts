@@ -15,6 +15,13 @@ export class ShowGradeComponent implements OnInit {
   ModalTitle:string;
   ActivateAddEditGradeComp:boolean="false";
   grade:any;
+
+  // filter data
+  GradeIdFilter:string="";
+  GradeNameFilter:string="";
+  GradeListWithoutFilter:any=[];
+
+
   ngOnInit(): void {
 
     this.refreshGradeList();
@@ -57,6 +64,24 @@ export class ShowGradeComponent implements OnInit {
   refreshGradeList(){
     this.service.getGradeList().subscribe(data=>{
       this.GradeList=data;
+      this.GradeListWithoutFilter=data;
     });
   }
+   
+  // filter date
+  filterFn(){
+    var GradeIdFilter = this.GradeIdFilter;
+    var GradeNameFilter = this.GradeNameFilter;
+
+    this.GradeList=this.GradeListWithoutFilter.filter(function(el){
+      return el.GradeId.toString().toLowerCase().includes(
+        GradeIdFilter.toString().trim().toLowerCase()
+      )&&
+      el.GradeName.toString().toLowerCase().includes(
+        GradeNameFilter.toString().trim().toLowerCase()
+      )
+    });
+  }
+
+
 }
