@@ -11,32 +11,32 @@ export class ShowSubjectComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
-  GradeList:any=[];
+  SubjectList:any=[];
 
   ModalTitle:string;
-  ActivateAddEditGradeComp:boolean="false";
-  grade:any;
+  ActivateAddEditSubjectComp:boolean="false";
+  subject:any;
   ngOnInit(): void {
 
-    this.refreshGradeList();
+    this.refreshSubjectList();
   }
 
   addClick(){
     this.grade{
-      GradeId:0,
-      GradeName:""
+      SubjectId:0,
+      SubjectName:""
 
     }
 
-    this.ModalTitle="Add Grade";
-    this.ActivateAddEditGradeComp=true;
+    this.ModalTitle="Add Subject";
+    this.ActivateAddEditSubjectComp=true;
   }
 
   // editclick
   editClick(item){
-    this.grade = item;
-    this.ModalTitle='Edit Grade';
-    this.ActivateAddEditGrade=true;
+    this.subject = item;
+    this.ModalTitle='Edit Subject';
+    this.ActivateAddEditSubject=true;
   }
 
   // delete
