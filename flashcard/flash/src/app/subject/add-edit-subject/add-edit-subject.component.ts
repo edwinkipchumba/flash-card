@@ -15,33 +15,62 @@ export class AddEditSubjectComponent implements OnInit {
   SubjectName:string;
   Subject:string;
   PhotoFileName:string;
+  PhotoFilePath:string;
+
+  GradeList:any=[];
 
   ngOnInit(): void {
+    this.loadGradeList();
 
-    this.GradeId=this.grade.GradeId;
-    this.GradeName=this.grade.GradeName;
+    loadGradeList(){
+      this.service.getAllGradeNames().subscribe((data:any)=>{
+        this.GradeList=data;
+
+        this.SubjectId=this.subject.SubjectId;
+        this.SubjectName=this.subject.SubjectName;
+        this.Grade=this.subject.Grade;
+        this.PhotoFileName=this.subject.PhotoFileName;
+        this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
+      });
+    }
   }
 
-  // add grades
-  addGrade(){
+  // add subject
+  AddSubject(){
     var val={
-            GradeId:this.GradeId,
-            GradeName:this.GradeName};
+            SubjectId:this.SubjectId,
+            SubjectName:this.SubjectName,
+            Grade:this.Subject,
+            PhotoFileName:this.PhotoFileName};
 
-    this.service.addGrade(val).subscribe(res=>{
+    this.service.addSubject(val).subscribe(res=>{
       alert(res.toString());
     });
   }
 
-  // update grade
-  updateGrade(){
+  // update subject
+  updateSubject(){
     var val={
-            GradeId:this.GradeId,
-            GradeName:this.GradeName};
+            SubjectId:this.SubjectId,
+            SubjectName:this.SubjectName,
+            Grade:this.Subject,
+            PhotoFileName:this.PhotoFileName};
 
-    this.service.addGrade(val).subscribe(res=>{
+    this.service.updateSubject(val).subscribe(res=>{
       alert(res.toString());
     });
   }
 
+  // uploading photo
+  uploadPhoto(event){
+    var file=event.target.files[0];
+    const formData:FormData=new FormData();
+    formData.append('uploadedFile',file,file.name);
+
+    this.service.uploadPhoto(formData).subscribe((data:any)=>{
+      this.PhotoFileName=data.toString();
+      this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
+    })
+  }
 }
+
