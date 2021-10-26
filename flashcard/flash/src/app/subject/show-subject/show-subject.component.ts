@@ -22,9 +22,11 @@ export class ShowSubjectComponent implements OnInit {
   }
 
   addClick(){
-    this.grade{
+    this.subject{
       SubjectId:0,
-      SubjectName:""
+      SubjectName:"",
+      Subject:"",
+      SubjectFileName:"ananymous.png",
 
     }
 
@@ -55,9 +57,9 @@ export class ShowSubjectComponent implements OnInit {
     this.refreshSubjectList();
   }
 
-  refreshGradeList(){
-    this.service.getGradeList().subscribe(data=>{
-      this.GradeList=data;
+  refreshSubjectList(){
+    this.service.getSubjectList().subscribe(data=>{
+      this.SubjectList=data;
     });
   }
 }
