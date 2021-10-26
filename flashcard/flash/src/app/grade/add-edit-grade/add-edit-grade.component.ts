@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { SharedService} from 'src/app/shared.service';
 
 @Component({
   selector: 'app-add-edit-grade',
@@ -7,7 +8,7 @@ import { Component, OnInit,Input } from '@angular/core';
 })
 export class AddEditGradeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:SharedService) { }
 
   @Input() grade:any;
   GradeId:string;
@@ -17,6 +18,28 @@ export class AddEditGradeComponent implements OnInit {
 
     this.GradeId=this.grade.GradeId;
     this.GradeName=this.grade.GradeName;
+  }
+
+  // add grades
+  addGrade(){
+    var val={
+            GradeId:this.GradeId,
+            GradeName:this.GradeName};
+
+    this.service.addGrade(val).subscribe(res=>{
+      alert(res.toString());
+    });
+  }
+
+  // update grade
+  updateGrade(){
+    var val={
+            GradeId:this.GradeId,
+            GradeName:this.GradeName};
+
+    this.service.addGrade(val).subscribe(res=>{
+      alert(res.toString());
+    });
   }
 
 }
