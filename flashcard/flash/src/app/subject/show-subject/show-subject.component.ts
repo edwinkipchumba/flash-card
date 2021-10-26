@@ -42,17 +42,17 @@ export class ShowSubjectComponent implements OnInit {
   // delete
   deleteClick(item){
     if(confirm('Are you sure??')){
-      this.service.deleteGrade(item.GradeId).subscribe(data=>{
+      this.service.deleteSubject(item.SubjectId).subscribe(data=>{
         alert(data.toString());
-        this.refreshGradeList();
+        this.refreshSubjectList();
       })
     }
   }
 
   // close click
   closeClick(){
-    this.ActivateAddEditGradeComp=false;
-    this.refreshGradeList();
+    this.ActivateAddEditSubjectComp=false;
+    this.refreshSubjectList();
   }
 
   refreshGradeList(){
