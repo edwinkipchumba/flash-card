@@ -38,6 +38,15 @@ export class ShowGradeComponent implements OnInit {
     this.ActivateAddEditGrade=true;
   }
 
+  // delete
+  deleteClick(item){
+    if(confirm('Are you sure??')){
+      this.service.deleteGrade(item.GradeId).subscribe(data=>{
+        alert(data.toString());
+        this.refreshGradeList();
+      })
+    }
+  }
 
   // close click
   closeClick(){
