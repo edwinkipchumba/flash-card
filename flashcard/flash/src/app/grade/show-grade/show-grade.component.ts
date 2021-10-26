@@ -12,11 +12,30 @@ export class ShowGradeComponent implements OnInit {
 
   GradeList:any=[];
 
+  modalTitle:string;
+  ActivateAddEditGradeComp:boolean="false";
+  grade:any;
   ngOnInit(): void {
 
     this.refreshGradeList();
   }
 
+  addClick(){
+    this.grade{
+      GradeId:0,
+      GradeName:""
+
+    }
+
+    this.ModalTitle="Add Grade";
+    this.ActivateAddEditGradeComp=true;
+  }
+
+  // close click
+  closeClick(){
+    this.ActivateAddEditGradeComp=false;
+    this.refreshGradeList();
+  }
 
   refreshGradeList(){
     this.service.getGradeList().subscribe(data=>{
