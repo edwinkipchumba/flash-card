@@ -8,7 +8,7 @@ import {Observable} from 'rxjs';
 export class SharedService {
 
   // add api url here
-  readonly APIUrl = 'http://127.0.0.1:8000';
+  readonly APIUrl = 'https://nancyflashcards.herokuapp.com/';
   readonly PhotoUrl = 'http://127.0.0.1:8000/media/';
 
   constructor(private http:HttpClient) { }
@@ -26,7 +26,7 @@ export class SharedService {
   }
 
   deleteGrade(val:any){
-    return this.http.put(this.APIUrl + '/grade/',val);
+    return this.http.delete(this.APIUrl + '/grade/',val);
   }
 
   // subjects
@@ -44,7 +44,7 @@ export class SharedService {
   }
 
   deleteSubject(val:any){
-    return this.http.put(this.APIUrl + '/subject/',val);
+    return this.http.delete(this.APIUrl + '/subject/',val);
   }
 
   // method to save profile pictures
@@ -54,7 +54,7 @@ export class SharedService {
 
     // method to get all gradenames
   getAllGradeNames():Observable<any[]>{
-    return this.http.get<any[]>(this.APIUrl + 'grade');
+    return this.http.get<any[]>(this.APIUrl + '/grade/');
   }
 
   

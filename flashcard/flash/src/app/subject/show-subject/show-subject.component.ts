@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService} from 'src/app/shared.service';
+// import { Observable, Subject } from 'rxjs';
 
 
 @Component({
@@ -13,21 +14,21 @@ export class ShowSubjectComponent implements OnInit {
 
   SubjectList:any=[];
 
-  ModalTitle:string;
-  ActivateAddEditSubjectComp:boolean="false";
+  ModalTitle:any;
+  ActivateAddEditSubjectComp:any='false';
   subject:any;
+
   ngOnInit(): void {
 
     this.refreshSubjectList();
   }
 
   addClick(){
-    this.subject{
-      SubjectId:0,
-      SubjectName:"",
-      Subject:"",
-      SubjectFileName:"ananymous.png",
-
+    this.subject={
+    SubjectId:0,
+    SubjectName:"",
+    //   // Grade:"",
+    SubjectFileName:""
     }
 
     this.ModalTitle="Add Subject";
@@ -38,7 +39,7 @@ export class ShowSubjectComponent implements OnInit {
   editClick(item){
     this.subject = item;
     this.ModalTitle='Edit Subject';
-    this.ActivateAddEditSubject=true;
+    this.ActivateAddEditSubjectComp=true;
   }
 
   // delete

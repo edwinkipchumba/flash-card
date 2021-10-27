@@ -13,7 +13,7 @@ export class AddEditSubjectComponent implements OnInit {
   @Input() subject:any;
   SubjectId:string;
   SubjectName:string;
-  Subject:string;
+  Grade:string;
   PhotoFileName:string;
   PhotoFilePath:string;
 
@@ -21,6 +21,8 @@ export class AddEditSubjectComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadGradeList();
+
+  }
 
     loadGradeList(){
       this.service.getAllGradeNames().subscribe((data:any)=>{
@@ -33,15 +35,14 @@ export class AddEditSubjectComponent implements OnInit {
         this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
       });
     }
-  }
+ 
 
   // add subject
   AddSubject(){
-    var val={
-            SubjectId:this.SubjectId,
-            SubjectName:this.SubjectName,
-            Grade:this.Subject,
-            PhotoFileName:this.PhotoFileName};
+    var val = {SubjectId:this.SubjectId,
+               SubjectName:this.SubjectName,
+               Grade:this.Grade,
+               PhotoFileName:this.PhotoFileName};
 
     this.service.addSubject(val).subscribe(res=>{
       alert(res.toString());
@@ -50,11 +51,10 @@ export class AddEditSubjectComponent implements OnInit {
 
   // update subject
   updateSubject(){
-    var val={
-            SubjectId:this.SubjectId,
-            SubjectName:this.SubjectName,
-            Grade:this.Subject,
-            PhotoFileName:this.PhotoFileName};
+    var val = {SubjectId:this.SubjectId,
+               SubjectName:this.SubjectName,
+               Grade:this.Grade,
+               PhotoFileName:this.PhotoFileName};
 
     this.service.updateSubject(val).subscribe(res=>{
       alert(res.toString());
@@ -67,7 +67,7 @@ export class AddEditSubjectComponent implements OnInit {
     const formData:FormData=new FormData();
     formData.append('uploadedFile',file,file.name);
 
-    this.service.uploadPhoto(formData).subscribe((data:any)=>{
+    this.service.UploadPhoto(formData).subscribe((data:any)=>{
       this.PhotoFileName=data.toString();
       this.PhotoFilePath=this.service.PhotoUrl+this.PhotoFileName;
     })

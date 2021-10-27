@@ -12,8 +12,8 @@ export class ShowGradeComponent implements OnInit {
 
   GradeList:any=[];
 
-  ModalTitle:string;
-  ActivateAddEditGradeComp:boolean="false";
+  ModalTitle:any;
+  ActivateAddEditGradeComp:any="false";
   grade:any;
 
   // filter data
@@ -28,12 +28,10 @@ export class ShowGradeComponent implements OnInit {
   }
 
   addClick(){
-    this.grade{
+    this.grade={
       GradeId:0,
-      GradeName:""
-
+      GradeName:"",
     }
-
     this.ModalTitle="Add Grade";
     this.ActivateAddEditGradeComp=true;
   }
@@ -42,7 +40,7 @@ export class ShowGradeComponent implements OnInit {
   editClick(item){
     this.grade = item;
     this.ModalTitle='Edit Grade';
-    this.ActivateAddEditGrade=true;
+    this.ActivateAddEditGradeComp=true;
   }
 
   // delete
@@ -69,7 +67,7 @@ export class ShowGradeComponent implements OnInit {
   }
    
   // filter date
-  filterFn(){
+  FilterFn(){
     var GradeIdFilter = this.GradeIdFilter;
     var GradeNameFilter = this.GradeNameFilter;
 
@@ -83,5 +81,14 @@ export class ShowGradeComponent implements OnInit {
     });
   }
 
-
+// sort
+  sortResult(prop,asc){
+    this.GradeList=this.GradeListWithoutFilter.sort(function(a,b){
+      if(asc){
+        return (a[prop]>b[prop])?1 : ((a[prop]<b[prop]) ?-1 :0);
+      }else{
+        return (b[prop]>a[prop])?1 : ((b[prop]<a[prop]) ?-1 :0);
+      }
+    })
+  }
 }

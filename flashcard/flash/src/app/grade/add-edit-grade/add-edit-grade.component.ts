@@ -22,7 +22,7 @@ export class AddEditGradeComponent implements OnInit {
 
   // add grades
   addGrade(){
-    var val={
+    var val = {
             GradeId:this.GradeId,
             GradeName:this.GradeName};
 
@@ -33,11 +33,11 @@ export class AddEditGradeComponent implements OnInit {
 
   // update grade
   updateGrade(){
-    var val={
+    var val = {
             GradeId:this.GradeId,
             GradeName:this.GradeName};
 
-    this.service.addGrade(val).subscribe(res=>{
+    this.service.updateGrade(val).subscribe(res=>{
       alert(res.toString());
     });
   }
