@@ -9,11 +9,14 @@ import { ShowGradeComponent } from './grade/show-grade/show-grade.component';
 import { AddEditGradeComponent } from './grade/add-edit-grade/add-edit-grade.component';
 import { ShowSubjectComponent } from './subject/show-subject/show-subject.component';
 import { AddEditSubjectComponent } from './subject/add-edit-subject/add-edit-subject.component';
-import { SharedService } from './shared.service';
+// import { SharedService } from './shared.service';
+import { AuthusService } from './services/authus.service';
 
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,16 +27,18 @@ import { HomeComponent } from './home/home.component';
     AddEditGradeComponent,
     ShowSubjectComponent,
     AddEditSubjectComponent,
-    HomeComponent
+    HomeComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
-  providers: [SharedService],
+  providers: [AuthusService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

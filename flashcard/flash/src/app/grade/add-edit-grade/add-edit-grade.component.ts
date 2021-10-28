@@ -1,6 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { SharedService} from 'src/app/shared.service';
-
+import { AuthusService} from '../../services/authus.service';
 @Component({
   selector: 'app-add-edit-grade',
   templateUrl: './add-edit-grade.component.html',
@@ -8,7 +7,7 @@ import { SharedService} from 'src/app/shared.service';
 })
 export class AddEditGradeComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:AuthusService) { }
 
   @Input() grade:any;
   GradeId:string;

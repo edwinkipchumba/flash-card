@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService} from 'src/app/shared.service';
+import { AuthusService} from '../../services/authus.service';
+
 
 @Component({
   selector: 'app-show-grade',
@@ -8,7 +9,7 @@ import { SharedService} from 'src/app/shared.service';
 })
 export class ShowGradeComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:AuthusService) { }
 
   GradeList:any=[];
 

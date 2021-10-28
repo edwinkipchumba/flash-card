@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SharedService} from 'src/app/shared.service';
+import { AuthusService} from '../../services/authus.service';
 // import { Observable, Subject } from 'rxjs';
 
 
@@ -10,7 +10,7 @@ import { SharedService} from 'src/app/shared.service';
 })
 export class ShowSubjectComponent implements OnInit {
 
-  constructor(private service:SharedService) { }
+  constructor(private service:AuthusService) { }
 
   SubjectList:any=[];
 
